@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Queue Visualizer</title>
+
+  <!-- Google Fonts: Inter for UI, JetBrains Mono for code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER: Title + Mode Tabs
+  ============================================================ -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="logo-area">
+        <span class="logo-icon">⟳</span>
+        <h1 class="app-title">Queue <span class="accent">Visualizer</span></h1>
+      </div>
+
+      <!-- Mode Tab Switcher -->
+      <nav class="mode-tabs" role="tablist" aria-label="Queue Modes">
+        <button class="tab-btn active" data-mode="linear"   role="tab" aria-selected="true">
+          <span class="tab-icon">▬</span> Linear Queue
+        </button>
+        <button class="tab-btn"        data-mode="circular" role="tab" aria-selected="false">
+          <span class="tab-icon">◎</span> Circular Queue
+        </button>
+        <button class="tab-btn"        data-mode="priority" role="tab" aria-selected="false">
+          <span class="tab-icon">★</span> Priority Queue
+        </button>
+        <button class="tab-btn"        data-mode="deque"    role="tab" aria-selected="false">
+          <span class="tab-icon">⇌</span> Deque
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       MAIN LAYOUT
+  ============================================================ -->
+  <main class="app-main">
+
+    <!-- ── LEFT / CENTER: Visualization + Controls ── -->
+    <section class="center-panel">
+
+      <!-- Inline message banner (overflow / underflow / info) -->
+      <div id="message-banner" class="message-banner hidden" role="alert" aria-live="polite"></div>
+
+      <!-- ── Visualization Card ── -->
+      <div class="card viz-card">
+        <div class="card-header">
+          <h2 class="card-title" id="viz-title">Linear Queue Visualization</h2>
+          <span class="mode-badge" id="mode-badge">Linear</span>
+        </div>
+
+        <!-- Pointer labels row (FRONT / REAR shown above cells) -->
+        <div class="pointer-row" id="pointer-row">
+          <div class="ptr-label ptr-front hidden" id="ptr-front">
+            <span class="ptr-arrow">▼</span>
+            <span class="ptr-text">FRONT</span>
+          </div>
+          <div class="ptr-label ptr-rear hidden" id="ptr-rear">
+            <span class="ptr-arrow">▼</span>
+            <span class="ptr-text">REAR</span>
+          </div>
+        </div>
+
+        <!-- Horizontal queue cells -->
+        <div class="queue-track" id="queue-track" aria-label="Queue cells">
+          <!-- Cells injected by JS -->
+        </div>
+
+        <!-- Index labels row -->
+        <div class="index-row" id="index-row">
+          <!-- Index labels injected by JS -->
+        </div>
+
+        <!-- Circular ring view (shown only in circular mode) -->
+        <div class="circular-ring-wrapper hidden" id="circular-ring-wrapper">
+          <div class="ring-toggle-bar">
+            <span>Ring View</span>
+            <button class="ring-toggle-btn" id="ring-toggle-btn">Hide Ring</button>
+          </div>
+          <div class="circular-ring-container">
+            <svg class="ring-svg" id="ring-svg" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+              <!-- Cells and arrows drawn by JS -->
+            </svg>
+          </div>
+        </div>
+      </div><!-- /viz-card -->
+
+      <!-- ── Controls Card ── -->
+      <div class="card controls-card">
+        <div class="controls-grid">
+
+          <!-- Enqueue input + button -->
+          <div class="ctrl-group enqueue-group">
+            <label class="ctrl-label" for="enqueue-input">Value</label>
+            <div class="input-row">
+              <input
+                type="text"
+                id="enqueue-input"
+                class="ctrl-input"
+                placeholder="Enter value…"
+                maxlength="6"
+                aria-label="Value to enqueue"
+              />
+              <button class="op-btn btn-enqueue" id="btn-enqueue">
+                <span class="btn-icon">+</span> Enqueue
+              </button>
+            </div>
+          </div>
+
+          <!-- Deque-specific: Enqueue Front -->
+          <div class="ctrl-group deque-only hidden" id="deque-enqueue-front-group">
+            <label class="ctrl-label" for="deque-front-input">Front Value</label>
+            <div class="input-row">
+              <input
+                type="text"
+                id="deque-front-input"
+                class="ctrl-input"
+                placeholder="Enqueue front…"
+                maxlength="6"
+              />
+              <button class="op-btn btn-enqueue-front" id="btn-enqueue-front">
+                <span class="btn-icon">⇤</span> Enq Front
+              </button>
+            </div>
+          </div>
+
+          <!-- Operation buttons row -->
+          <div class="ctrl-group ops-group">
+            <div class="ops-row">
+              <button class="op-btn btn-dequeue"  id="btn-dequeue">
+                <span class="btn-icon">−</span> Dequeue
+              </button>
+              <button class="op-btn btn-dequeue-rear deque-only hidden" id="btn-dequeue-rear">
+                <span class="btn-icon">⇥</span> Deq Rear
+              </button>
+              <button class="op-btn btn-front"    id="btn-front">
+                <span class="btn-icon">👁</span> Peek Front
+              </button>
+              <button class="op-btn btn-isempty"  id="btn-isempty">
+                <span class="btn-icon">?</span> isEmpty
+              </button>
+              <button class="op-btn btn-isfull"   id="btn-isfull">
+                <span class="btn-icon">!</span> isFull
+              </button>
+              <button class="op-btn btn-clear"    id="btn-clear">
+                <span class="btn-icon">✕</span> Clear
+              </button>
+            </div>
+          </div>
+
+          <!-- Capacity + Speed -->
+          <div class="ctrl-group settings-group">
+            <div class="setting-row">
+              <label class="ctrl-label" for="capacity-input">Capacity (3–10)</label>
+              <input
+                type="number"
+                id="capacity-input"
+                class="ctrl-input ctrl-input--sm"
+                value="6"
+                min="3"
+                max="10"
+                aria-label="Queue capacity"
+              />
+              <button class="op-btn btn-set-capacity" id="btn-set-capacity">Set</button>
+            </div>
+            <div class="setting-row">
+              <label class="ctrl-label" for="speed-slider">Animation Speed</label>
+              <div class="speed-row">
+                <span class="speed-label">Slow</span>
+                <input type="range" id="speed-slider" class="speed-slider" min="1" max="3" step="1" value="2" aria-label="Animation speed" />
+                <span class="speed-label">Fast</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /controls-grid -->
+      </div><!-- /controls-card -->
+
+    </section><!-- /center-panel -->
+
+    <!-- ── RIGHT PANEL: Info + Log ── -->
+    <aside class="right-panel">
+
+      <!-- Live Info Card -->
+      <div class="card info-card">
+        <div class="card-header">
+          <h2 class="card-title">Live Info</h2>
+        </div>
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-key">Front Index</span>
+            <span class="info-val" id="info-front">—</span>
+          </div>
+          <div class="info-item">
+            <span class="info-key">Rear Index</span>
+            <span class="info-val" id="info-rear">—</span>
+          </div>
+          <div class="info-item">
+            <span class="info-key">Size</span>
+            <span class="info-val" id="info-size">0</span>
+          </div>
+          <div class="info-item">
+            <span class="info-key">Capacity</span>
+            <span class="info-val" id="info-capacity">6</span>
+          </div>
+          <div class="info-item">
+            <span class="info-key">isEmpty</span>
+            <span class="info-val badge" id="info-isempty">true</span>
+          </div>
+          <div class="info-item">
+            <span class="info-key">isFull</span>
+            <span class="info-val badge" id="info-isfull">false</span>
+          </div>
+        </div>
+      </div><!-- /info-card -->
+
+      <!-- Operation Log Card -->
+      <div class="card log-card">
+        <div class="card-header">
+          <h2 class="card-title">Operation Log</h2>
+          <button class="clear-log-btn" id="btn-clear-log" title="Clear log">✕</button>
+        </div>
+        <ul class="op-log" id="op-log" aria-live="polite" aria-label="Operation log">
+          <li class="log-entry log-info">Queue initialized. Ready.</li>
+        </ul>
+      </div><!-- /log-card -->
+
+    </aside><!-- /right-panel -->
+
+  </main><!-- /app-main -->
+
+  <!-- ============================================================
+       BOTTOM PANEL: C Code Display
+  ============================================================ -->
+  <section class="code-panel-wrapper">
+    <div class="card code-card">
+      <div class="card-header">
+        <h2 class="card-title">C Implementation</h2>
+        <div class="code-meta">
+          <span class="complexity-badge" id="complexity-badge">O(1)</span>
+          <span class="op-name-badge" id="op-name-badge">—</span>
+        </div>
+      </div>
+      <pre class="code-block" id="code-block" aria-label="C code for current operation"><code id="code-content">/* Select an operation to see its C implementation */
+
+#define MAX 6
+
+typedef struct {
+    int items[MAX];
+    int front, rear, size;
+} Queue;
+</code></pre>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

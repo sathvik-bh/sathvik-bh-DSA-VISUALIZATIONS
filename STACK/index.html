@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stack Visualizer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="toast-container"></div>
+
+  <header>
+    <div class="header-inner">
+      <div class="header-icon">⚡</div>
+      <div class="header-text">
+        <h1>Stack Visualizer</h1>
+        <p class="header-subtitle">LIFO Data Structure — Last In, First Out</p>
+      </div>
+      <div class="header-badge">
+        <span class="badge-dot"></span>
+        <span>Interactive</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="grid">
+
+    <!-- LEFT PANEL: Controls -->
+    <aside class="panel left-panel">
+      <div class="panel-title">
+        <span class="panel-icon">🎛️</span> Controls
+      </div>
+
+      <!-- Capacity Setter -->
+      <div class="control-group">
+        <label class="control-label">Stack Capacity</label>
+        <div class="capacity-row">
+          <input
+            id="capacity-input"
+            type="number"
+            min="3"
+            max="10"
+            value="6"
+            class="input-field capacity-field"
+            aria-label="Stack capacity"
+          />
+          <button id="set-capacity-btn" class="btn btn-set">Set</button>
+        </div>
+        <div class="control-hint">Range: 3 – 10</div>
+      </div>
+
+      <!-- Value Input -->
+      <div class="control-group">
+        <label class="control-label">Value</label>
+        <input
+          id="value-input"
+          type="text"
+          placeholder="Enter value..."
+          class="input-field value-field"
+          aria-label="Value to push"
+          autocomplete="off"
+        />
+        <div id="value-error" class="inline-error" aria-live="polite"></div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="control-group">
+        <label class="control-label">Operations</label>
+        <div class="btn-grid">
+          <button id="push-btn"    class="btn btn-push">▶ Push</button>
+          <button id="pop-btn"     class="btn btn-pop">◀ Pop</button>
+          <button id="peek-btn"    class="btn btn-peek">👁 Peek</button>
+          <button id="isempty-btn" class="btn btn-isempty">? isEmpty</button>
+          <button id="isfull-btn"  class="btn btn-isfull">? isFull</button>
+          <button id="clear-btn"   class="btn btn-clear">🗑 Clear</button>
+        </div>
+      </div>
+
+      <!-- Speed Slider -->
+      <div class="control-group">
+        <label class="control-label">Animation Speed</label>
+        <div class="slider-row">
+          <span class="slider-label">Slow</span>
+          <input
+            id="speed-slider"
+            type="range"
+            min="1"
+            max="10"
+            value="6"
+            class="speed-slider"
+            aria-label="Animation speed"
+          />
+          <span class="slider-label">Fast</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CENTER PANEL: Stack Visualization -->
+    <section class="panel center-panel">
+      <div class="panel-title">
+        <span class="panel-icon">📦</span> Stack Visualization
+      </div>
+
+      <div id="stack-wrapper">
+        <div id="stack-index-labels"></div>
+        <div id="stack-container"></div>
+      </div>
+
+      <!-- Info Bar -->
+      <div class="info-bar">
+        <div class="stat-card">
+          <div class="stat-value" id="stat-size">0</div>
+          <div class="stat-label">Size</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="stat-capacity">6</div>
+          <div class="stat-label">Capacity</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="stat-top-index">-1</div>
+          <div class="stat-label">Top Index</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value stat-bool stat-true" id="stat-isempty">Yes</div>
+          <div class="stat-label">isEmpty</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value stat-bool stat-false" id="stat-isfull">No</div>
+          <div class="stat-label">isFull</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT PANEL: Log + Code -->
+    <aside class="panel right-panel">
+      <div class="panel-title">
+        <span class="panel-icon">📋</span> Operation Log
+      </div>
+      <div id="log-panel">
+        <div class="log-empty">No operations yet. Try pushing a value!</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="panel-title" style="margin-top:12px;">
+        <span class="panel-icon">💻</span> C Implementation
+        <span id="code-op-badge" class="op-badge" style="display:none;"></span>
+      </div>
+      <div id="code-panel">
+        <pre id="code-display"><code id="code-content" class="c-code">// Select an operation to see its C implementation</code></pre>
+      </div>
+    </aside>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

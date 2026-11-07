@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tower of Hanoi 3D</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><h1>Tower of Hanoi in 3D</h1><p>Every peg is a stack. Move one disk at a time, and never put a big disk on a small one.</p></header>
+<main>
+  <aside class="card">
+    <h2>Controls</h2>
+    <label>Number of disks
+      <select id="disks"><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select>
+    </label>
+    <label>Move time (ms) <input id="spd" type="range" min="150" max="900" value="450"></label>
+    <button id="solve" class="pri">Auto solve</button>
+    <button id="step">Next step</button>
+    <button id="reset">Reset</button>
+    <p class="hint">Play it yourself: click a peg to pick up its top disk, then click the peg where it should go.</p>
+    <div id="win"></div>
+  </aside>
+  <section id="stage"></section>
+  <aside class="card">
+    <div class="info"><div>Moves <b id="m">0</b></div><div>Minimum <b id="min">7</b></div></div>
+    <h2>Stacks (bottom to top)</h2>
+    <div id="stacks"></div>
+    <h2>Move log</h2><ul id="log"></ul>
+    <h2>C code</h2>
+    <pre>void hanoi(int n, char from, char to, char aux) {
+    if (n == 0) return;
+    hanoi(n-1, from, aux, to);
+    push(to, pop(from));
+    hanoi(n-1, aux, to, from);
+}
+// Time O(2^n), Space O(n)</pre>
+  </aside>
+</main>
+<div id="toast"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
