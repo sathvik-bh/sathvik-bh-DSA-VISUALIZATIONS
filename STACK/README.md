@@ -1,77 +1,121 @@
-# Stack Visualizer
+# 📚 Stack Visualizer
 
-An interactive, animated **Stack data structure visualizer** built with pure HTML5, CSS3, and Vanilla JavaScript — no frameworks, no dependencies. Just open `index.html` in any modern browser.
+An interactive and animated **Stack Data Structure Visualizer** built using HTML5, CSS3, and Vanilla JavaScript.
 
----
+This project provides a visual representation of how a Stack works, allowing users to perform different operations and understand the LIFO (Last In, First Out) principle through real-time animations.
 
-## 🚀 How to Run
-
-1. Download or clone this folder.
-2. **Double-click `index.html`** — that's it!
-
-> Works in Chrome, Firefox, Edge, and Safari. No server required.
+No frameworks or external JavaScript libraries are required.
 
 ---
 
-## 📋 Operations
+## 🚀 Getting Started
+
+### How to Run
+
+1. Clone or download this repository.
+2. Navigate to the `Stack` folder.
+3. Open `index.html` in any modern web browser.
+
+Alternatively, use the Live Server extension in Visual Studio Code.
+
+**Supported Browsers:** Google Chrome, Mozilla Firefox, Microsoft Edge, and Safari.
+
+No backend or server configuration is required.
+
+---
+
+## 📋 Stack Operations
+
+A Stack follows the **LIFO (Last In, First Out)** principle, meaning the element inserted last is removed first.
+
+The visualizer supports the following operations:
 
 | Operation | Description | Time Complexity |
-|-----------|-------------|-----------------|
-| **Push**    | Adds a value on top of the stack. Shows overflow error if full. | O(1) |
-| **Pop**     | Removes and returns the top value. Shows underflow error if empty. | O(1) |
-| **Peek**    | Returns the top value without removing it. | O(1) |
-| **isEmpty** | Returns `true` if the stack has no elements, `false` otherwise. | O(1) |
-| **isFull**  | Returns `true` if the stack has reached its max capacity, `false` otherwise. | O(1) |
-| **Clear**   | Resets the stack, removing all elements instantly. | O(1) |
+|---|---|---|
+| Push | Inserts a new element at the top of the stack. | O(1) |
+| Pop | Removes the top element from the stack. | O(1) |
+| Peek | Displays the top element without removing it. | O(1) |
+| isEmpty | Checks whether the stack contains any elements. | O(1) |
+| isFull | Checks whether the stack has reached its maximum capacity. | O(1) |
+| Clear | Removes all elements and resets the stack. | O(1)* |
+
+*Clear complexity depends on the underlying implementation.*
 
 ---
 
 ## ✨ Features
 
-- **Animated Stack** — smooth push (slide-in), pop (lift-out), and peek (pulse glow) animations
-- **Overflow / Underflow detection** — shake animation, red border flash, and toast notification
-- **Adjustable capacity** (3–10) — resize the stack on the fly with a reset warning
-- **Animation speed control** — slider from 0.2s (fast) to 1.5s (slow)
-- **Live info panel** — real-time size, capacity, top index, isEmpty, and isFull stats
-- **Operation log** — scrollable history of the last 50 operations with color-coded entries
-- **C code panel** — every operation displays its equivalent C implementation with syntax highlighting
-- **Toast notifications** — slide-in/out toasts for overflow, underflow, and capacity changes
-- **Glassmorphism dark UI** — teal accent color on a deep dark background
-- **Fully responsive** — 3-column desktop layout, stacked on tablet/mobile
+- **Animated Stack Operations:** Smooth animations for Push, Pop, and Peek operations.
+- **Overflow and Underflow Detection:** Visual error indicators, shake animations, and toast notifications.
+- **Adjustable Capacity:** Dynamically change stack capacity between 3 and 10 elements.
+- **Animation Speed Control:** Adjust animation speed from 0.2 seconds to 1.5 seconds.
+- **Live Information Panel:** Displays current size, capacity, top index, isEmpty, and isFull status.
+- **Operation History:** Maintains a scrollable history of the last 50 operations with color-coded entries.
+- **C Code Visualization:** Displays equivalent C implementations of stack operations with syntax highlighting.
+- **Toast Notifications:** Provides instant feedback for operations, errors, and capacity changes.
+- **Modern UI:** Dark-themed glassmorphism interface with teal accents.
+- **Responsive Design:** Three-column desktop layout that adapts to tablet and mobile screens.
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Technologies Used
 
-| Technology | Details |
-|------------|---------|
-| **HTML5**      | Semantic structure, ARIA labels, no dependencies |
-| **CSS3**       | CSS custom properties, keyframe animations, `backdrop-filter`, CSS Grid, Flexbox |
-| **Vanilla JS** | ES6 classes (`Stack`, `StackUI`), DOM manipulation, event listeners, no libraries |
-| **Google Fonts** | Inter, Poppins (UI), JetBrains Mono (code) — loaded from CDN |
+| Technology | Purpose |
+|---|---|
+| HTML5 | Structures the application and provides semantic elements. |
+| CSS3 | Handles styling, animations, layouts, and responsiveness. |
+| Vanilla JavaScript | Implements stack logic, DOM manipulation, and interactive functionality. |
+| Google Fonts | Uses Inter, Poppins, and JetBrains Mono for typography. |
+
+### Implementation Details
+
+- ES6 JavaScript classes (`Stack` and `StackUI`).
+- CSS Grid and Flexbox for responsive layouts.
+- CSS custom properties and keyframe animations.
+- DOM manipulation and event listeners.
+- No external JavaScript frameworks or libraries.
 
 ---
 
-## 📁 File Structure
+## 📁 Project Structure
 
+```text
+Stack/
+│
+├── index.html       # Main application structure
+├── style.css        # Styling, animations, and responsive layout
+├── script.js        # Stack implementation and UI functionality
+└── README.md        # Project documentation
 ```
-STACK/
-├── index.html   ← Main HTML page
-├── style.css    ← All styles, animations, and responsive layout
-├── script.js    ← Stack logic, UI rendering, toast system
-└── README.md    ← This file
-```
+
+---
+
+## 📊 Complexity Analysis
+
+For a stack with a maximum capacity of N elements:
+
+| Operation | Time Complexity | Space Complexity |
+|---|---|---|
+| Push | O(1) | O(1) |
+| Pop | O(1) | O(1) |
+| Peek | O(1) | O(1) |
+| isEmpty | O(1) | O(1) |
+| isFull | O(1) | O(1) |
+
+**Overall Space Complexity:** O(N), where N represents the maximum stack capacity.
 
 ---
 
 ## 🎨 Design System
 
-- **Background**: `linear-gradient(135deg, #0a0a0f → #0d1117 → #0a0f0a)`
-- **Accent**: `#00d4aa` (teal/cyan)
-- **Danger**: `#ff4444` | **Warning**: `#ffaa00` | **Info**: `#4488ff`
-- **Cards**: `rgba(255,255,255,0.05)` + `backdrop-filter: blur(10px)`
-- **Radius**: 12px cards, 8px buttons/inputs
+The application uses a modern dark-themed interface with a glassmorphism design.
 
----
-
-*Built as an educational tool to visualize LIFO (Last In, First Out) stack behavior.*
+| Element | Design Specification |
+|---|---|
+| Background | Dark gradient (`#0a0a0f`, `#0d1117`, `#0a0f0a`) |
+| Primary Accent | Teal (`#00d4aa`) |
+| Danger | Red (`#ff4444`) |
+| Warning | Orange (`#ffaa00`) |
+| Information | Blue (`#4488ff`) |
+| Cards | Transparent backgrounds with blur effects |
+| Border Radius | 12
