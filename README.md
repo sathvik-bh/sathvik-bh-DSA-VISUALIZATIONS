@@ -1,8 +1,8 @@
-# 🚀 DSA Visualizer
+# 🚀 DSA Visualizations
 
 ### Interactive Data Structures and Algorithms Visualization Platform
 
-DSA Visualizer is an interactive web-based platform designed to help students understand fundamental Data Structures and Algorithms through visual representations and real-time operations.
+DSA Visualizations is an interactive web-based platform designed to help students understand fundamental Data Structures and Algorithms through visual representations and real-time operations.
 
 Instead of learning algorithms only through theoretical explanations, users can interact with different data structures and observe how operations work step by step.
 
@@ -12,7 +12,7 @@ Instead of learning algorithms only through theoretical explanations, users can 
 
 Understanding Data Structures and Algorithms can sometimes be challenging, especially when learning how elements are stored, inserted, deleted, and manipulated.
 
-DSA Visualizer aims to make this learning process easier through interactive visualizations.
+DSA Visualizations makes this learning process easier through interactive visual demonstrations.
 
 The project currently includes four modules:
 
@@ -32,7 +32,8 @@ Each module provides an interactive environment where users can explore the work
 - Simple and user-friendly interface.
 - Individual modules for different DSA concepts.
 - Beginner-friendly learning experience.
-- Browser-based application with no complex installation required.
+- Browser-based application.
+- Four independently accessible visualizers.
 
 ---
 
@@ -40,7 +41,7 @@ Each module provides an interactive environment where users can explore the work
 
 ### 1. Stack Visualizer
 
-Demonstrates the working of a Stack data structure following the LIFO (Last In, First Out) principle.
+Demonstrates the working of a Stack data structure following the **LIFO (Last In, First Out)** principle.
 
 **Operations:**
 - Push
@@ -48,13 +49,11 @@ Demonstrates the working of a Stack data structure following the LIFO (Last In, 
 - Peek
 - Display Stack
 
-📂 Folder: `Stack/`
-
----
+**Project Folder:** `STACK/`
 
 ### 2. Queue Visualizer
 
-Demonstrates the working of a Queue data structure following the FIFO (First In, First Out) principle.
+Demonstrates the working of a Queue data structure following the **FIFO (First In, First Out)** principle.
 
 **Operations:**
 - Enqueue
@@ -62,9 +61,7 @@ Demonstrates the working of a Queue data structure following the FIFO (First In,
 - Front
 - Display Queue
 
-📂 Folder: `Queue/`
-
----
+**Project Folder:** `QUEUE/`
 
 ### 3. Singly Linked List Visualizer
 
@@ -76,9 +73,7 @@ Demonstrates how nodes are connected through pointers in a Singly Linked List.
 - Traversal
 - Display Linked List
 
-📂 Folder: `Singly-Linked-List/`
-
----
+**Project Folder:** `SINGLY LINKED LIST/`
 
 ### 4. Tower of Hanoi Visualizer
 
@@ -88,17 +83,32 @@ Provides a visual demonstration of the classic Tower of Hanoi problem using recu
 - Interactive disk movement.
 - Visualization of three rods.
 - Step-by-step movement of disks.
-- Understanding recursive problem-solving.
+- Demonstration of recursive problem-solving.
 
-📂 Folder: `Tower-of-Hanoi/`
+**Project Folder:** `TOWER OF HANOI/`
 
 ---
 
 ## 🛠️ Technologies Used
 
-- HTML5 – Structure of the application.
-- CSS3 – Styling and visual presentation.
-- JavaScript – Logic, operations, and interactivity.
+| Technology | Purpose |
+|---|---|
+| HTML5 | Structure of the application |
+| CSS3 | Styling and visual presentation |
+| JavaScript | Logic, operations and interactivity |
+
+---
+
+## 🌐 Live Demos
+
+Try all four interactive visualizers online.
+
+| No. | Project | Live Demo |
+|---|---|---|
+| 1 | Stack Visualizer | [Open Stack](https://stack-visualizer-044.netlify.app) |
+| 2 | Queue Visualizer | [Open Queue](https://queue-visualizer-044.netlify.app) |
+| 3 | Singly Linked List Visualizer | [Open Linked List](https://singly-linked-list-044.netlify.app) |
+| 4 | Tower of Hanoi Visualizer | [Open Tower of Hanoi](https://tower-of-hanoi-044.netlify.app) |
 
 ---
 
@@ -108,35 +118,36 @@ Follow these steps to run the project locally.
 
 ### Prerequisites
 
-- A modern web browser.
 - Git (optional, for cloning the repository).
+- A modern web browser.
+- Visual Studio Code (optional).
 
 ### Installation
 
 **1. Clone the repository**
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone https://github.com/sathvik-bh/sathvik-bh-DSA-VISUALIZATIONS.git
 ```
 
 **2. Navigate to the project directory**
 
 ```bash
-cd DSA-VISUALIZATIONS
+cd sathvik-bh-DSA-VISUALIZATIONS
 ```
 
 **3. Open any module**
 
-Navigate to any of the four folders:
+Choose one of the following folders:
 
-- Stack
-- Queue
-- Singly-Linked-List
-- Tower-of-Hanoi
+- `STACK`
+- `QUEUE`
+- `SINGLY LINKED LIST`
+- `TOWER OF HANOI`
 
 **4. Run the application**
 
-Open the `index.html` file in your browser.
+Open the `index.html` file inside the selected module using your web browser.
 
 You can also use the Live Server extension in Visual Studio Code.
 
@@ -145,20 +156,26 @@ You can also use the Live Server extension in Visual Studio Code.
 ## 📁 Project Structure
 
 ```text
-DSA-VISUALIZATIONS/
+sathvik-bh-DSA-VISUALIZATIONS/
 │
-├── README.md
+├── QUEUE/
 │
-├── Stack/
+├── SINGLY LINKED LIST/
 │
-├── Queue/
+├── STACK/
 │
-├── Singly-Linked-List/
+├── TOWER OF HANOI/
 │
-└── Tower-of-Hanoi/
+├── screenshots/
+│
+├── .gitignore
+│
+├── LICENSE
+│
+└── README.md
 ```
 
-Each module contains its own source code and documentation.
+Each module contains its own source code and related files.
 
 ---
 
@@ -175,17 +192,21 @@ Each module contains its own source code and documentation.
 ## 🔮 Future Enhancements
 
 - Add more data structures and algorithms.
-- Introduce additional sorting and searching visualizations.
+- Introduce sorting and searching visualizations.
 - Improve animations and transitions.
 - Add step-by-step algorithm explanations.
 - Develop a unified dashboard for all visualizers.
-- Add complexity analysis for different operations.
+- Add time and space complexity analysis.
 
 ---
 
 ## 👨‍💻 Author
 
-Developed as an educational project to simplify the understanding of Data Structures and Algorithms through interactive visualization.
+**Sathvik BH**
+
+B.E. Artificial Intelligence and Machine Learning Student
+
+[GitHub Profile](https://github.com/sathvik-bh)
 
 ---
 
@@ -193,15 +214,8 @@ Developed as an educational project to simplify the understanding of Data Struct
 
 If you find this project useful, consider giving the repository a star on GitHub!
 
-**Learn. Visualize. Understand.**
+<div align="center">
 
-## 🌐 Live Demo
+### Learn. Visualize. Understand. 🚀
 
-Try all four interactive visualizers online:
-
-| No. | Project | Live Website |
-|---|---|---|
-| 1 | Stack Visualizer | [🚀 Open Stack](https://stack-visualizer-044.netlify.app) |
-| 2 | Queue Visualizer | [🚀 Open Queue](https://queue-visualizer-044.netlify.app) |
-| 3 | Singly Linked List Visualizer | [🚀 Open Linked List](https://singly-linked-list-044.netlify.app) |
-| 4 | Tower of Hanoi 3D | [🚀 Open Tower of Hanoi](https://tower-of-hanoi-044.netlify.app) |
+</div>
